@@ -74,26 +74,4 @@ Proceso de inscripción a Kodemia
 
 */
 
-// Objetivo: plasmar en funciones y callbacks dicho proceso
-
-const enrollment = {
-    name: 'Víctor Cosme',
-    isInterviewed: false, // true 
-    hasAnOffer: false, // true 
-    isEnrolled: false, // true 
-    canTakeBootcamp: false // true 
-};
-
-
-function intereviewing(object, cabllback) {
-    console.log('Va a ser calificado');
-    setTimeout(() => {
-        // Ejecución de la función a través del callback
-        cabllback(null, 'Hola, ya llegué al supermercado');
-        // callback('Hubo una manifestación!! D:, null);
-    }, 5000);
-};
-
-
-
 
