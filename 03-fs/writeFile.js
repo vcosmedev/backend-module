@@ -23,11 +23,11 @@ import fs from 'fs' // cambiar la extenxion del archivo a .mjs
 
 fs.writeFile('koder-1.txt', 'Hola Koders!!', (error) => {
     if(error) {
-        console.log('Error: ', error)
-        return
+        console.log('Error: ', error);
+        return;
     }
-    console.log('Se ha creado el archivo!! :D')
-})
+    console.log('Se ha creado el archivo!! :D');
+});
 
 /*
 - Ejercicio de Callbacks del proceso de inscripcion en Kodemia
