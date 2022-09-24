@@ -16,15 +16,15 @@ REQUERIMIENTOS:
     * JSON.stringyfy -> convierte de un objeto a un string JS
 */
 
-const fs = require('fs') ;
+const fs = require('fs');
 
 function getKoders() {
     fs.readFile('./koders.json', 'utf8', (err, data) => {
         if(err){
-            log('Error: ', err)
+            log('Error: ', err);
             return;
         }
-        let koderParseado = JSON.parse(data)
+        let koderParseado = JSON.parse(data);
         return  koderParseado.koders;
     })
 }
@@ -36,9 +36,9 @@ function getKoders() {
 function addKoder(newKoder) {
     const data = fs.readFileSync('./koders.json', 'utf8');
     let dataJSON = JSON.parse(data);
-    dataJSON.koders.push(newKoder);
+    dataJSON.koders.push(newKoder)
 
-    dataString = JSON.stringify(dataJSON, null, 2);
+    dataString = JSON.stringify(dataJSON, null, 2)
 
     fs.writeFile('./koders.json', dataString, (err) => {
         if(err) {
@@ -68,7 +68,7 @@ function deleteKoder(idKoder) {
     let dataJSON = JSON.parse(data);
     let koders = dataJSON.koders;
 
-    dataJSON.koders = koders.filter(koder => koder.id !== idKoder)
+    dataJSON.koders = koders.filter(koder => koder.id !== idKoder);
     fs.writeFile('./koders.json', JSON.stringify(dataJSON, null, 2), (err) => {
         if(err){ 
             console.log('Error: ', err);
@@ -88,22 +88,36 @@ function deleteKoder(idKoder) {
 function editKoder(idKoder) {
     const data = fs.readFileSync('./koders.json', 'utf8');
     let dataJSON = JSON.parse(data);
-    let koders = dataJSON.koders;
-    let koder = koders.find(koder => koder.id == idKoder);
-    koder.name = 'Víctor';
-    koder.lastName = 'Cosme';
-    koder.age = 30;
-    console.log(koder);
+    const koders = dataJSON.koders;
 
-    fs.writeFile('./koders.json', JSON.stringify(koder, null, 2), (err) => {
+    const updateKoder = koders.map( koder => koder.id === idKoder ? {...koder, name: 'Jose', lastname: 'Mendoza', age: 34} : koder);
+
+    //console.log(updateKoder);
+
+    fs.writeFile('./koders.json', JSON.stringify(updateKoder, null, 2), (err) => {
         if(err) {
-            console.log('Error: ', err);
+            console.log("Error: ", err);
             return;
         }
-        console.log('Se editó');
-    });
 
-    // console.log(koder);
+        console.log('Se actualizó ');
+    })
 }
 
-editKoder(3);
+//editKoder(5)
+
+/**
+ * ! 5º Crear una función que permita obtener a los koders que sean mayores a 25 años
+ */
+
+function getKoderOld25(){
+    const data = fs.readFileSync('./koders.json', 'utf8');
+    const dataJSON = JSON.parse(data);
+    console.log(dataJSON);
+
+    let koderOld25 = dataJSON.filter(koders => koders.age > 25);
+    console.log(koderOld25);
+    
+}
+
+getKoderOld25();
