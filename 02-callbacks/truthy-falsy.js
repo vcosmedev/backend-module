@@ -1,4 +1,5 @@
 // falsy && truthy
+// utilizados para evaluar sentencias en una estructura 'if' (true o false)
 
 // truthy -> cualquier valor que evalúa a 'true' en una pregunta lógica
 // "39843"
@@ -19,7 +20,7 @@ console.log('Objeto: ', Boolean(objeto))
 console.log('array: ', Boolean(array))
 
 
-// falsy -> cualquier valor que evaluá a 'false' en una pregunta lógica
+// falsy -> cualquier valor que evalúa a 'false' en una pregunta lógica
 // falsy
 
 const cadenaVacia = ''
