@@ -81,6 +81,8 @@ fs.unlink('./koder-2.txt', (err) => {
 
 
 // 5º .copyFile
+// used to asynchronously copy a file from the source path to destination path.
+
 
 
 
