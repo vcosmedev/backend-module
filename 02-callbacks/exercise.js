@@ -70,7 +70,7 @@ takeAInterview(enrollment, (errorToInterview, koderInterviewed) => {
         return;
     };
 
-    console.log(`${koderInterviewed.name} ha sido entrevistada!! `)
+    console.log(`${koderInterviewed.name} ha sido entrevistad@!! `)
     console.log(koderInterviewed)
     // Oferta
     doOffer(koderInterviewed, (errorDoOffer, koderWithOffer) => {
@@ -78,7 +78,7 @@ takeAInterview(enrollment, (errorToInterview, koderInterviewed) => {
             console.log('Error oferta: ', errorDoOffer);
             return;
         }
-        console.log(`${koderWithOffer.name} ya tiene una oferta!! `);
+        console.log(`${koderWithOffer.name} ya tiene una oferta!!`);
         console.log(koderWithOffer);
         toEnroll(koderWithOffer, (errorToEnroll, koderEnrolled) => {
             if(errorToEnroll) {
