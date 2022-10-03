@@ -1,16 +1,8 @@
 import fs from 'fs' // Cambiar la extensión del archivo a .mjs
 
-fs.writeFile('koder-1.txt', 'Hola Koders!!', (error) => {
-    if(error) {
-        console.log('Error: ', error);
-        return;
-    }
-    console.log('Se ha creado el archivo!! :D');
-});
-
 /*
-- Ejercicio de Callbacks del proceso de inscripcion en Kodemia
-- Ir a la documentacion de node del modulo del file system, callback api
+- Ejercicio de Callbacks del proceso de inscripción en Kodemia
+- Ir a la documentación de Node del modulo del file system, callback api:
     Para Archivos
     - 1º .writeFile
     - 2º .readFile
@@ -24,6 +16,15 @@ fs.writeFile('koder-1.txt', 'Hola Koders!!', (error) => {
     Para cada método crear su script .js or .mjs
 */
 
+// PARA ARCHIVOS
+// 1º .writeFile
+fs.writeFile('koder-1.txt', 'Hola Koders!!', (error) => {
+    if(error) {
+        console.log('Error: ', error);
+        return;
+    }
+    console.log('Se ha creado el archivo!! :D');
+});
 
 // 2º .readFile
 
@@ -83,19 +84,77 @@ fs.unlink('./koder-2.txt', (err) => {
 // 5º .copyFile
 // used to asynchronously copy a file from the source path to destination path.
 
+fs.copyFile('./koder.txt', './koder-copy.txt', (err) => {
+    if (err) {
+        console.log(err);
+    } 
+    console.log('El archivo ./koder.txt fue copiado');
+  });
+
+// FORMA SINTETIZADA
+// fs.copyFile('./texto.txt', './copyText.txt', err => {
+//     err
+//     ?console.log('Ha ocurrido un error')
+//     :console.log('Tu archivo ha sido copiado correctamente');
+// });
 
 
+// PARA DIRECTORIOS
+// 1º .mkdir
 
 
+fs.mkdir('./03-fs/newFile', { recursive: true }, (err) => {
+    if (err) {
+        console.log(err);
+    }
+    console.log('Tu carpeta "newFile" fue creada existosamente');
+  });
+
+// FORMA SINTETIZADA
+// fs.mkdir('./03-fs/newFile', { recursive: true }, err => {
+//    err
+//    ?console.log('Ha ocurrido un error')
+//    :console.log('Tu carpeta "newFile" fue creada existosamente');
+//  });
+
+// 2º readdir
+// Un búfer es un espacio en la memoria (en general, RAM) que almacena datos binarios. En Node.js, 
+// podemos acceder a estos espacios de memoria con la clase Buffer incorporada.
+
+let dir = 'newFile';
+let dirBuffer = Buffer.from(dir);
+
+fs.readdir(dirBuffer, (err, files) => {
+    if (err) {
+        console.log(err);
+    }
+    console.log('Tu carpeta "newFile" fue leída exitosamente');
+});
+
+// FORMA SINTETIZADA
+// fs.readdir(dirBuf, (err, files)=>{
+//     err
+//    ?console.log('Ha ocurrido un error')
+//    :console.log(files);
+// });
 
 
+// 3º rmdir
+
+fs.rmdir('./03-fs/newFileTest', (err) => {
+    if(err) {
+        console.log(err)
+    }
+    console.log('Tu carpeta "newFileTest" fue eliminada exitosamente');
+});
 
 
-
-
-
-
-
+// FORMA SINTETIZADA
+// fs.rmdir('..//fileExample', (err) =>{
+//    err
+//    ?console.log('Ha ocurrido un error')
+//    :console.log('Tu carpeta ha sido eliminada existosamente');
+// });
 
 
 
